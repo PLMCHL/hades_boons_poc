@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hades Boons</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.0.0/list.min.js"></script>
+	<script src="scripts.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<div id="container">
+  <div class="example-page">
+    <div>
+      <h1>Hades Boons PoC</h1>
+    </div>
+    
+    <div id="main">
+      
+        <div id="hades-boons-list">
+          <input class="search" placeholder="Search Boons" />
+          <ul class="sort-by">
+            <li class="sort btn" data-sort="name">Sort by name</li>
+            <li class="sort btn" data-sort="god">Sort by God</li>
+          </ul>
+          <ul class="filter">
+            <li class="btn filter-god-none">Show all</li>
+            <li class="btn filter-god">Aphrodite</li>
+            <li class="btn filter-god">Ares</li>
+            <li class="btn filter-god">Artemis</li>
+            <li class="btn filter-god">Athena</li>
+            <li class="btn filter-god">Chaos</li>
+            <li class="btn filter-god">Demeter</li>
+            <li class="btn filter-god">Dionysus</li>
+            <li class="btn filter-god">Hermes</li>
+            <li class="btn filter-god">Poseidon</li>
+            <li class="btn filter-god">Zeus</li>
+          </ul>
+          <ul class="list"></ul>
+</div>
+</div>
+
+    <div style="display:none;">
+<!-- A template element is needed when list is empty, TODO: needs a better solution -->
+    <li id="list-item">
+              <img class="thumbnail" />
+              <div class="tooltip">
+              <h4><span class="name"></span> <span class="category"></span></h4>
+              <p class="description"></p>
+              </div>
+          </li>
+      </div>
+    
+</div> <!-- end of #container -->
+</body>
+</html>
