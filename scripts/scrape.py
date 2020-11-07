@@ -4,6 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 
 godList = ["Artemis", "Ares"]
+json_data = []
 
 for godName in godList:
 	URL = 'https://hades.gamepedia.com/' + godName
@@ -18,7 +19,6 @@ for godName in godList:
 	# Remove header element
 	table_rows.pop(0)
 
-	json_data = []
 	for tr in table_rows:
 	    jsonObj = {}
 
@@ -37,6 +37,21 @@ for godName in godList:
 	    description = descriptionCell.text;
 	    jsonObj["description"] = description
 
+	    # Notes
+	    notesCell = tr.find("td", {"class": "boonTableNotes"})
+	    notes = notesCell.text;
+	    jsonObj["notes"] = notes
+
+	   	# Tier
+	    tier = re.findall(r"Tier (\d)", notes);
+	    if len(tier) > 0:
+	    	jsonObj["tier"] = tier[0]
+	    else:
+	    	print("Missing tier - " + name)
+
+	    # God
+	    jsonObj["god"] = godName
+
 	    json_data.append(jsonObj)
 
-	print(json_data)
+print(json_data)
