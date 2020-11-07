@@ -1,3 +1,4 @@
+import re
 import json
 import requests
 from bs4 import BeautifulSoup
@@ -14,13 +15,6 @@ for godName in godList:
 
 	table_rows = table.tbody.find_all('tr', recursive=False)
 
-	# print(len(table_rows))
-
-	# for tr in table_rows:
-	#     td = tr.find_all('td')
-	#     row = [i.text for i in td]
-	#     print(row)
-
 	# Remove header element
 	table_rows.pop(0)
 
@@ -28,9 +22,20 @@ for godName in godList:
 	for tr in table_rows:
 	    jsonObj = {}
 
+	    # Name
 	    nameCell = tr.find("td", {"class": "boonTableName"})
 	    name = nameCell.find("b").find(text=True);
 	    jsonObj["name"] = name
+
+	    # Thumbnail
+	    fullThumbnailUrl = nameCell.find("img")['src'];
+	    thumbnailMatch = re.findall(r"^.*\.png", fullThumbnailUrl);
+	    jsonObj["thumbnail"] = thumbnailMatch[0];
+
+	    # Description
+	    descriptionCell = tr.find("td", {"class": "boonTableDescription"})
+	    description = descriptionCell.text;
+	    jsonObj["description"] = description
 
 	    json_data.append(jsonObj)
 
