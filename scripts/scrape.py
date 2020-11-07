@@ -22,6 +22,13 @@ for godName in godList:
 	for tr in table_rows:
 	    jsonObj = {}
 
+	    # Skip Duo Boons, they will be taken care of later
+	    rarityCell =  tr.findAll("td")[2::3]
+	    tier = re.findall(r"Duo", rarityCell[0].text);
+	    if len(tier) > 0:
+	    	print("Skipping Duo Boon")
+	    	continue;
+
 	    # Name
 	    nameCell = tr.find("td", {"class": "boonTableName"})
 	    name = nameCell.find("b").find(text=True);
@@ -53,5 +60,8 @@ for godName in godList:
 	    jsonObj["god"] = godName
 
 	    json_data.append(jsonObj)
+
+# TODO Crawl Duo boons
+# https://hades.gamepedia.com/Duo_Boons
 
 print(json_data)
