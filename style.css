@@ -459,11 +459,21 @@ h1 {
   margin-bottom: 10px;
 }
 .boons-list .list li {
-  padding: 6px;
+  padding: 2px;
   display: inline-block;
   float: left;
   width: 100px;
   height: 100px;
+  margin: 2px;
+}
+.boons-list .list li[data-tier="1"]  {
+  background-color: rgba(205, 127, 50, 0.5); /* Bronze */
+}
+.boons-list .list li[data-tier="2"]  {
+  background-color: rgba(192, 192, 192, 0.5); /* Silver */
+}
+.boons-list .list li[data-tier="3"]  {
+  background-color: rgba(255, 215, 0, 0.3); /* Gold */
 }
 .boons-list li {
   background-color: rgba(0, 0, 0, 0.1);

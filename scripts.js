@@ -2,7 +2,7 @@ $( document ).ready(function() {
 
 // === SETUP ===
 var options = {
-  valueNames: [ 'name', 'description', 'god', { attr: 'src', name: 'thumbnail'} ],
+  valueNames: [ 'name', 'description', 'god', { attr: 'src', name: 'thumbnail'}, { data: ['tier'] },],
   item: 'list-item'
 };
 
