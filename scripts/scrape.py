@@ -64,4 +64,10 @@ for godName in godList:
 # TODO Crawl Duo boons
 # https://hades.gamepedia.com/Duo_Boons
 
-print(json_data)
+
+# Construct data and write to file
+file_data = "// This is not ideal, but want to keep being able to run this locally without a server, so no loading json directly yet.\nvar boonsData = " + json.dumps(json_data, indent=2) + ";"
+
+f = open("../data.js", "w")
+f.write(file_data)
+f.close()
