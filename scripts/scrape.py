@@ -3,7 +3,7 @@ import json
 import requests
 from bs4 import BeautifulSoup
 
-godList = ["Artemis", "Ares"]
+godList = ["Aphrodite", "Ares", "Artemis", "Athena", "Demeter", "Dionysus", "Hermes", "Poseidon", "Zeus"]
 json_data = []
 
 for godName in godList:
@@ -64,6 +64,8 @@ for godName in godList:
 # TODO Crawl Duo boons
 # https://hades.gamepedia.com/Duo_Boons
 
+# TODO Crawl Chaos boons
+# https://hades.gamepedia.com/Chaos
 
 # Construct data and write to file
 file_data = "// This is not ideal, but want to keep being able to run this locally without a server, so no loading json directly yet.\nvar boonsData = " + json.dumps(json_data, indent=2) + ";"
